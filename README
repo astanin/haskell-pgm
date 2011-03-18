@@ -53,3 +53,15 @@ Word16 with
 
 The array's indices (of the form (row,column)) start at (0,0) and run to
 (height-1,width-1).
+
+LICENSE
+-------
+
+The library was originally licensed under the terms of GPL license, but since
+2011 the original authors have given their permission to dual-license the code
+under both GPLv3 (see LICENSE2) and BSD (see LICENSE). The users may choose
+whichever license that suits them most.
+
+Permission from Frederick Ross: https://github.com/madhadron/haskell-pgm/pull/1
+Permission from Brian Lewis has been obtained in private e-mail on 18-03-2011.
+
