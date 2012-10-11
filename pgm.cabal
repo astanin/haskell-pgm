@@ -7,7 +7,7 @@ license:            BSD3
 license-file:       LICENSE
 author:             Frederick Ross <madhadron@gmail.com>
 maintainer:         Sergey Astanin <s.astanin@gmail.com>
-homepage:           https://github.com/sergeyastanin/haskell-pgm
+homepage:           https://github.com/astanin/haskell-pgm
 build-type:         Simple
 cabal-version:      >= 1.6
 extra-source-files: README
