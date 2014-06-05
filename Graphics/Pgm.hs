@@ -68,7 +68,7 @@ import Text.Printf              (printf)
 import qualified Data.ByteString as B
 
 magicNumber :: Parser ()
-magicNumber = do { char 'P'; char '5'; return () }
+magicNumber = do { _ <- char 'P'; _ <- char '5'; return () }
 
 integer :: Parser Int
 integer = do { s <- many1 digit; return $ read s }
@@ -83,10 +83,13 @@ maxVal :: Parser Int
 maxVal = do { i <- integer; return $ min 65536 i }
 
 comment :: Parser String
-comment = do { char '#'; c <- manyTill anyChar (try newline); return $ c ++ "\n" }
+comment = do { _ <- char '#'; c <- manyTill anyChar (try newline); return $ c ++ "\n" }
 
 commentAwareWhiteSpace :: Parser String
-commentAwareWhiteSpace = liftM concat $ many1 (choice [comment,do { many1 space; return "" }])
+commentAwareWhiteSpace = liftM concat $ many1 $
+                         choice
+                          [ comment
+                          , do { _ <- many1 space; return "" }]
 
 pgmHeader :: Parser (Int,Int,Int,String)
 pgmHeader = do magicNumber <?> "magic number"
@@ -96,7 +99,7 @@ pgmHeader = do magicNumber <?> "magic number"
                rows <- height <?> "height"
                hVal2 <- commentAwareWhiteSpace
                m <- maxVal <?> "maximum grey value"
-               space
+               _ <- space
                let q = hVal0 ++ hVal1 ++ hVal2
                return (rows,cols,m, Prelude.init q)
 
